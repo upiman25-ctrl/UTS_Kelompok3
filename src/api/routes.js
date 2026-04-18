@@ -5,7 +5,6 @@ const report = require('./components/report/report-routes');
 const shift = require('./components/shift/shft-route');
 const supplier = require('./components/supplier/supplier-route');
 const auth = require('./components/auth/auth-route');
-const users = require('./components/users/users-route');
 const discount = require('./components/discount/discount-route');
 const Metode_Pembayaran = require('./components/Metode_pembayaran/Metode_pembayaran-route');
 const payment = require('./components/payment/payment-route');

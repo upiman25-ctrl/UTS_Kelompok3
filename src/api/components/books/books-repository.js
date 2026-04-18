@@ -1,14 +1,14 @@
-const { Books } = require('../../../models');
+const { Discount } = require('../../../models');
 
-async function getBooks() {
+async function getDiscount() {
   return Books.find({});
 }
 
-async function create(title) {
-  return Books.create({ title });
+async function create(Title, DiscountCode, Amount, ExpiredAt) {
+  return Discount.create({ title: Title, discountCode: DiscountCode, amount: Amount, expiredAt: ExpiredAt });
 }
 
 module.exports = {
-  getBooks,
+  getDiscount,
   create,
 };

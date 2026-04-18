@@ -1,39 +1,33 @@
-const { Users } = require('../../../models');
+const { User } = require('../../../models');
 
 async function getUsers() {
-  return Users.find({});
+  return User.find({});
 }
 
-async function getUser(id) {
-  return Users.findById(id);
+async function createUser(email, password, fullName, Id) {
+  return User.create({ email, password, fullName, Id });
 }
+
+async function updateUser( email, fullName,role,isActive ) {
+  return User.findOneAndUpdate(
+    { email },
+    { email, fullName,role,isActive },
+    { new: true }
+  );
+}
+
+async function deleteUser(email) {
+  return User.findOneAndDelete({ email });
+}
+
 
 async function getUserByEmail(email) {
-  return Users.findOne({ email });
-}
-
-async function createUser(email, password, fullName) {
-  return Users.create({ email, password, fullName });
-}
-
-async function updateUser(id, email, fullName) {
-  return Users.updateOne({ _id: id }, { $set: { email, fullName } });
-}
-
-async function changePassword(id, password) {
-  return Users.updateOne({ _id: id }, { $set: { password } });
-}
-
-async function deleteUser(id) {
-  return Users.deleteOne({ _id: id });
-}
+  return User.findOne({ email });
+} 
 
 module.exports = {
   getUsers,
-  getUser,
-  getUserByEmail,
   createUser,
   updateUser,
-  changePassword,
-  deleteUser,
+  deleteUser,getUserByEmail
 };

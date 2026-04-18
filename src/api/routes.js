@@ -1,7 +1,6 @@
 const express = require('express');
 
 const auth = require('./components/auth/auth-route');
-const books = require('./components/books/books-route');
 const users = require('./components/users/users-route');
 const discount = require('./components/discount/discount-route');
 const Metode_Pembayaran = require('./components/Metode_pembayaran/Metode_pembayaran-route');
@@ -15,7 +14,6 @@ module.exports = () => {
   tax(app);
   discount(app);
   auth(app);
-  books(app);
   users(app);
 
   return app;

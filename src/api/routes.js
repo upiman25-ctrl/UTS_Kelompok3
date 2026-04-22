@@ -4,7 +4,7 @@ const inventory = require('./components/inventory/inventory-route');
 const report = require('./components/report/report-routes');
 const shift = require('./components/shift/shft-route');
 const supplier = require('./components/supplier/supplier-route');
-const auth = require('./components/auth/auth-route');
+const users = require('./components/users/user-route');
 const discount = require('./components/discount/discount-route');
 const Metode_Pembayaran = require('./components/Metode_pembayaran/Metode_pembayaran-route');
 const payment = require('./components/payment/payment-route');
@@ -25,7 +25,6 @@ module.exports = () => {
   report(app);
   shift(app);
   supplier(app);
-  auth(app);
   users(app);
   reservation(app);
   order(app);
@@ -34,12 +33,11 @@ module.exports = () => {
   address(app);
   review(app);
   notification(app);
-  product(app)
+  product(app);
   Metode_Pembayaran(app);
   payment(app);
   tax(app);
   discount(app);
-  auth(app);
   users(app);
 
   return app;

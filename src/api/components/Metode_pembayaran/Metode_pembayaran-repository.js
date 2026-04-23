@@ -4,6 +4,10 @@ async function getMetodePembayaran() {
   return MetodePembayaran.find();
 }
 
+async function getMetodePembayaranById(id) {
+  return MetodePembayaran.findById(id);
+}
+
 async function create(name, description, isActive) {
   return MetodePembayaran.create({ name, description, isActive });
 }
@@ -23,6 +27,7 @@ async function deleteMetodePembayaran(id) {
 
 module.exports = {
   getMetodePembayaran,
+  getMetodePembayaranById,
   create,
   updateMetodePembayaran,
   deleteMetodePembayaran,

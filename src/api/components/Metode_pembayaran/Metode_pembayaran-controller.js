@@ -12,11 +12,30 @@ async function getMetodePembayaran(request, response, next) {
   }
 }
 
+async function getMetodePembayaranById(request, response, next) {
+  try {
+    const { id } = request.params;
+    const metodePembayaran =
+      await metodePembayaranService.getMetodePembayaranById(id);
+
+    if (!metodePembayaran) {
+      throw errorResponder(
+        errorTypes.NOT_FOUND,
+        'Metode Pembayaran not found'
+      );
+    }
+
+    return response.status(200).json(metodePembayaran);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 async function createMetodePembayaran(request, response, next) {
   try {
     const { name, description, isActive } = request.body;
 
-    if (!name || !description || !isActive) {
+    if (!name || !description || isActive === undefined) {
       throw errorResponder(
         errorTypes.VALIDATION_ERROR,
         'All fields are required'
@@ -40,7 +59,7 @@ async function updateMetodePembayaran(request, response, next) {
     const { id } = request.params;
     const { name, description, isActive } = request.body;
 
-    if (!name || !description || !isActive) {
+    if (!name || !description || isActive === undefined) {
       throw errorResponder(
         errorTypes.VALIDATION_ERROR,
         'All fields are required'
@@ -84,6 +103,7 @@ async function deleteMetodePembayaran(request, response, next) {
 
 module.exports = {
   getMetodePembayaran,
+  getMetodePembayaranById,
   createMetodePembayaran,
   updateMetodePembayaran,
   deleteMetodePembayaran,

@@ -6,10 +6,11 @@ const config = require('../core/config');
 const logger = require('../core/logger')('app');
 
 // Join the database connection string
-const connectionString = new URL(config.database.connection);
-connectionString.pathname += config.database.name;
-
-mongoose.connect(`${connectionString.toString()}`);
+// Connect directly using Mongoose and pass the DB name in the options
+// This bypasses the strict URL parser and allows commas in the string!
+mongoose.connect(config.database.connection, {
+  dbName: config.database.name
+});
 
 const db = mongoose.connection;
 db.once('open', () => {

@@ -17,7 +17,7 @@ async function updateProduct(name, description, price, stock, category) {
 }
 
 async function deleteProduct(id) {
-  return Product.findByIdAndRemove(id);
+  return Product.findByIdAndDelete(id);
 }
 
 module.exports = {

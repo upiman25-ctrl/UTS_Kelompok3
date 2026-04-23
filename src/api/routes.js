@@ -25,7 +25,6 @@ module.exports = () => {
   report(app);
   shift(app);
   supplier(app);
-  users(app);
   reservation(app);
   order(app);
   table(app);

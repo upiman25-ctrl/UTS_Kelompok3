@@ -14,7 +14,7 @@ module.exports = (app) => {
   route.post('/', usersController.createUser);
 
   // Get user detail
-  route.get('/:id', usersController.getUser);
+  route.get('/:id', usersController.getUsers);
 
   // Update user
   route.put('/:id', usersController.updateUser);

@@ -1,24 +1,24 @@
 const express = require('express');
 
-const metode_pembayaranController = require('./Metode_pembayaran-controller');
+const metodePembayaranController = require('./Metode_pembayaran-controller');
 
 const route = express.Router();
 
 module.exports = (app) => {
-  app.use('/Metode-pembayaran', route);
+  app.use('/metode-pembayaran', route);
 
   // Get list of metode pembayaran
-  route.get('/', metode_pembayaranController.getMetodePembayaran);
+  route.get('/', metodePembayaranController.getMetodePembayaran);
 
   // Create a new metode pembayaran
-  route.post('/', metode_pembayaranController.createMetodePembayaran);
+  route.post('/', metodePembayaranController.createMetodePembayaran);
 
-  // TODO: Get a metode pembayaran by id
-  route.get('/:id', metode_pembayaranController.getMetodePembayaran);
+  // Get a metode pembayaran by id
+  route.get('/:id', metodePembayaranController.getMetodePembayaranById);
 
-  // TODO: Update a metode pembayaran by id
-  route.put('/:id', metode_pembayaranController.updateMetodePembayaran);
+  // Update a metode pembayaran by id
+  route.put('/:id', metodePembayaranController.updateMetodePembayaran);
 
-  // TODO: Delete a metode pembayaran by id
-  route.delete('/:id', metode_pembayaranController.deleteMetodePembayaran);
+  // Delete a metode pembayaran by id
+  route.delete('/:id', metodePembayaranController.deleteMetodePembayaran);
 };

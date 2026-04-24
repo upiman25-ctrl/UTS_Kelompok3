@@ -1,4 +1,4 @@
-const { Inventory } = require('../../../models');
+const { Inventory } = require('../../../models').default;
 
 async function getInventory() {
   return Inventory.find({});

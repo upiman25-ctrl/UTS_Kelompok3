@@ -1,4 +1,4 @@
-const { Users } = require('../../../models');
+const { Users } = require('../../../models').default;
 
 async function getUsers() {
   return Users.find({});

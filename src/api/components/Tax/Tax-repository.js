@@ -1,4 +1,4 @@
-const { tax } = require('../../../models');
+const { tax } = require('../../../models').default;
 
 async function getTaxes() {
   return tax.find({});

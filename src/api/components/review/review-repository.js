@@ -1,4 +1,4 @@
-const { Review } = require('../../../models');
+const { Review } = require('../../../models').default;
 
 async function getReviews() {
   return Review.find({});

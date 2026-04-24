@@ -1,4 +1,4 @@
-const { Product } = require('../../../models');
+const { Product } = require('../../../models').default;
 
 async function getProduct() {
   return Product.find({});

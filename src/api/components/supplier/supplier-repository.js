@@ -1,4 +1,4 @@
-const { Supplier } = require('../../../models');
+const { Supplier } = require('../../../models').default;
 
 async function getSupplier() {
   return Supplier.find({});

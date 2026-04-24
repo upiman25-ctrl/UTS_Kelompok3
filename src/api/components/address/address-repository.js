@@ -1,4 +1,4 @@
-const { Address } = require('../../../models');
+const { Address } = require('../../../models').default;
 
 async function getAddresses() {
   return Address.find({});

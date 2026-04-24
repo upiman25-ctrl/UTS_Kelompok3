@@ -63,8 +63,8 @@ async function updateProduct(request, response, next) {
 
 async function deleteProduct(request, response, next) {
   try {
-    const product = await productService.deleteProduct(request.params.id); 
-    
+    const product = await productService.deleteProduct(request.params.id);
+
     if (!product) {
       throw errorResponder(errorTypes.VALIDATION_ERROR, 'Product not found');
     }

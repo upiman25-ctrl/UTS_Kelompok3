@@ -1,4 +1,4 @@
-const { reservation } = require('../../../models');
+const { reservation } = require('../../../models').default;
 
 async function getreservation() {
   return reservation.find({});

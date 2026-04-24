@@ -1,4 +1,4 @@
-const { Metode_Pembayaran } = require('../../../models');
+const { Metode_Pembayaran } = require('../../../models').default;
 
 async function getMetodePembayaran() {
   return Metode_Pembayaran.find({});

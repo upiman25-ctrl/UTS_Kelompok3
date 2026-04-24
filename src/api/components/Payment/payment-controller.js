@@ -16,10 +16,19 @@ async function createPaymentMethod(request, response, next) {
     const { method, discount, amount, status, paidAt } = request.body;
 
     if (!method || !amount) {
-      throw errorResponder(errorTypes.VALIDATION_ERROR, 'Method and amount are required');
+      throw errorResponder(
+        errorTypes.VALIDATION_ERROR,
+        'Method and amount are required'
+      );
     }
 
-    const paymentMethod = await paymentService.createPaymentMethod(method, discount, amount, status, paidAt);
+    const paymentMethod = await paymentService.createPaymentMethod(
+      method,
+      discount,
+      amount,
+      status,
+      paidAt
+    );
 
     return response.status(200).json(paymentMethod);
   } catch (error) {
@@ -33,10 +42,20 @@ async function updatePaymentMethod(request, response, next) {
     const { method, discount, amount, status, paidAt } = request.body;
 
     if (!method || !amount) {
-      throw errorResponder(errorTypes.VALIDATION_ERROR, 'Method and amount are required');
+      throw errorResponder(
+        errorTypes.VALIDATION_ERROR,
+        'Method and amount are required'
+      );
     }
 
-    const paymentMethod = await paymentService.updatePaymentMethod(id, method, discount, amount, status, paidAt);
+    const paymentMethod = await paymentService.updatePaymentMethod(
+      id,
+      method,
+      discount,
+      amount,
+      status,
+      paidAt
+    );
 
     return response.status(200).json(paymentMethod);
   } catch (error) {
@@ -56,7 +75,9 @@ async function deletePaymentMethod(request, response, next) {
       );
     }
 
-    return response.status(200).json({ message: 'Payment Method Deleted Successfully' });
+    return response
+      .status(200)
+      .json({ message: 'Payment Method Deleted Successfully' });
   } catch (error) {
     return next(error);
   }

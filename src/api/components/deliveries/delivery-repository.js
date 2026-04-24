@@ -1,4 +1,4 @@
-const { Delivery } = require('../../../models');
+const { Delivery } = require('../../../models').default;
 
 async function getDeliveries() {
   return Delivery.find({});

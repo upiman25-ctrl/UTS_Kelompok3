@@ -1,13 +1,13 @@
-const { order } = require('../../../models');
+const { order } = require('../../../models').default;
 
 async function getorder() {
   return order.find({});
 }
 
-async function create(id,orders,date,waiter,catatan) {
+async function create(id, orders, date, waiter, catatan) {
   return order.create({ id, orders, date, waiter, catatan });
 }
-async function updateorder(id,orders,date,waiter,catatan) {
+async function updateorder(id, orders, date, waiter, catatan) {
   return order.findOneAndUpdate(
     { id },
     { orders, date, waiter, catatan },
@@ -21,6 +21,5 @@ module.exports = {
   getorder,
   create,
   updateorder,
-  deleteorder
+  deleteorder,
 };
-

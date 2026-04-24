@@ -1,4 +1,4 @@
-const { Notification } = require('../../../models');
+const { Notification } = require('../../../models').default;
 
 async function getNotifications() {
   return Notification.find({});

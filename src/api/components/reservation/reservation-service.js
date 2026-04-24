@@ -4,8 +4,8 @@ async function getreservation() {
   return reservationRepository.getreservation();
 }
 
-async function create(Id, order, date, waiter, catatan) {
-  return reservationRepository.create(Id, order, date, waiter, catatan);
+async function create(table, date) {
+  return reservationRepository.create(table, date);
 }
 
 async function updatereservation(id, table, date) {

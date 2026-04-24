@@ -13,16 +13,16 @@ async function getreservations(request, response, next) {
 
 async function createreservation(request, response, next) {
   try {
-    const { id, table, date } = request.body;
+    const {  table, date } = request.body;
 
-    if (!id || !table || !date) {
+    if (!table || !date) {
       throw errorResponder(
         errorTypes.VALIDATION_ERROR,
-        'Id, table, and date are required'
+        'Table and date are required'
       );
     }
 
-    const reservation = await reservationService.create(id, table, date);
+    const reservation = await reservationService.create(  table, date);
 
     return response.status(200).json(reservation);
   } catch (error) {

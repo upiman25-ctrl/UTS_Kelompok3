@@ -4,7 +4,7 @@ const inventory = require('./components/inventory/inventory-route');
 const report = require('./components/report/report-routes');
 const shift = require('./components/shift/shft-route');
 const supplier = require('./components/supplier/supplier-route');
-const users = require('./components/users/user-route');
+const auth = require('./components/auth/auth-route');
 const discount = require('./components/discount/discount-route');
 const metode = require('./components/Metode_pembayaran/Metode_pembayaran-route');
 

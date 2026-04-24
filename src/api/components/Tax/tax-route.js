@@ -1,6 +1,6 @@
 const express = require('express');
 
-const taxController = require('./tax-controller');
+const taxController = require('./Tax-controller');
 
 const route = express.Router();
 

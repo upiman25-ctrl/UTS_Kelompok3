@@ -1,9 +1,29 @@
-const metode_pembayaranService = require('./metode_pembayaran-service');
+const metodePembayaranService = require('./Metode_pembayaran-service');
 const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getMetodePembayaran(request, response, next) {
   try {
-    const metodePembayaran = await metode_pembayaranService.getMetodePembayaran();
+    const metodePembayaran =
+      await metodePembayaranService.getMetodePembayaran();
+
+    return response.status(200).json(metodePembayaran);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+async function getMetodePembayaranById(request, response, next) {
+  try {
+    const { id } = request.params;
+    const metodePembayaran =
+      await metodePembayaranService.getMetodePembayaranById(id);
+
+    if (!metodePembayaran) {
+      throw errorResponder(
+        errorTypes.NOT_FOUND,
+        'Metode Pembayaran not found'
+      );
+    }
 
     return response.status(200).json(metodePembayaran);
   } catch (error) {
@@ -15,11 +35,18 @@ async function createMetodePembayaran(request, response, next) {
   try {
     const { name, description, isActive } = request.body;
 
-    if (!name || !description || !isActive) {
-      throw errorResponder(errorTypes.VALIDATION_ERROR, 'All fields are required');
+    if (!name || !description || isActive === undefined) {
+      throw errorResponder(
+        errorTypes.VALIDATION_ERROR,
+        'All fields are required'
+      );
     }
 
-    const metodePembayaran = await metode_pembayaranService.create(name, description, isActive);
+    const metodePembayaran = await metodePembayaranService.create(
+      name,
+      description,
+      isActive
+    );
 
     return response.status(200).json(metodePembayaran);
   } catch (error) {
@@ -32,11 +59,20 @@ async function updateMetodePembayaran(request, response, next) {
     const { id } = request.params;
     const { name, description, isActive } = request.body;
 
-    if (!name || !description || !isActive) {
-      throw errorResponder(errorTypes.VALIDATION_ERROR, 'All fields are required');
+    if (!name || !description || isActive === undefined) {
+      throw errorResponder(
+        errorTypes.VALIDATION_ERROR,
+        'All fields are required'
+      );
     }
 
-    const metodePembayaran = await metode_pembayaranService.updateMetodePembayaran(id, name, rate, type, isActive);
+    const metodePembayaran =
+      await metodePembayaranService.updateMetodePembayaran(
+        id,
+        name,
+        description,
+        isActive
+      );
 
     return response.status(200).json(metodePembayaran);
   } catch (error) {
@@ -46,7 +82,9 @@ async function updateMetodePembayaran(request, response, next) {
 
 async function deleteMetodePembayaran(request, response, next) {
   try {
-    const success = await metode_pembayaranService.deleteMetodePembayaran(request.params.id);
+    const success = await metodePembayaranService.deleteMetodePembayaran(
+      request.params.id
+    );
 
     if (!success) {
       throw errorResponder(
@@ -55,13 +93,17 @@ async function deleteMetodePembayaran(request, response, next) {
       );
     }
 
-    return response.status(200).json({ message: 'Metode Pembayaran Deleted Successfully' });
+    return response
+      .status(200)
+      .json({ message: 'Metode Pembayaran Deleted Successfully' });
   } catch (error) {
     return next(error);
   }
 }
+
 module.exports = {
   getMetodePembayaran,
+  getMetodePembayaranById,
   createMetodePembayaran,
   updateMetodePembayaran,
   deleteMetodePembayaran,

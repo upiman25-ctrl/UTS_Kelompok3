@@ -1,15 +1,19 @@
-const { Metode_Pembayaran } = require('../../../models').default;
+const { MetodePembayaran } = require('../../../models');
 
 async function getMetodePembayaran() {
-  return Metode_Pembayaran.find({});
+  return MetodePembayaran.find();
+}
+
+async function getMetodePembayaranById(id) {
+  return MetodePembayaran.findById(id);
 }
 
 async function create(name, description, isActive) {
-  return Metode_Pembayaran.create({ name, description, isActive });
+  return MetodePembayaran.create({ name, description, isActive });
 }
 
 async function updateMetodePembayaran(id, name, description, isActive) {
-  return Metode_Pembayaran.findByIdAndUpdate(
+  return MetodePembayaran.findByIdAndUpdate(
     id,
     { name, description, isActive },
     { new: true }
@@ -17,11 +21,13 @@ async function updateMetodePembayaran(id, name, description, isActive) {
 }
 
 async function deleteMetodePembayaran(id) {
-  return Metode_Pembayaran.findByIdAndDelete(id);
+  const result = await MetodePembayaran.findByIdAndDelete(id);
+  return !!result;
 }
 
 module.exports = {
   getMetodePembayaran,
+  getMetodePembayaranById,
   create,
   updateMetodePembayaran,
   deleteMetodePembayaran,

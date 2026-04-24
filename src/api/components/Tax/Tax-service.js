@@ -1,4 +1,4 @@
-const taxRepository = require('./tax-repository');
+const taxRepository = require('./Tax-repository');
 
 async function getTaxes() {
   return taxRepository.getTaxes();

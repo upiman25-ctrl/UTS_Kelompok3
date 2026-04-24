@@ -1,4 +1,4 @@
-const taxService = require('./tax-service');
+const taxService = require('./Tax-service');
 const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getTaxes(request, response, next) {

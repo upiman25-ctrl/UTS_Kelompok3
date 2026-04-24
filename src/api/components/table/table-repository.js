@@ -1,4 +1,4 @@
-const { table } = require('../../../models');
+const { table } = require('../../../models').default;
 
 async function gettable() {
   return table.find({});

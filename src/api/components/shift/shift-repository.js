@@ -1,4 +1,4 @@
-const { Shift } = require('../../../models');
+const { Shift } = require('../../../models').default;
 
 async function getShift() {
   return Shift.find({});

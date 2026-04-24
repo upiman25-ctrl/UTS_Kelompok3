@@ -13,7 +13,7 @@ module.exports = (app) => {
 
   // route.get('/:id', orderController.getorder);
 
-  route.put('/', orderController.updateorder);
+  route.put('/:id', orderController.updateorder);
 
-  route.delete('/', orderController.deleteorder);
+  route.delete('/:id', orderController.deleteorder);
 };

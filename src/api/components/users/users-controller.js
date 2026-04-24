@@ -10,7 +10,7 @@ async function getUsers(request, response, next) {
   }
 }
 
-async function createUser(request, response, next) {
+async function createUsers(request, response, next) {
   try {
     const { email, password, fullName } = request.body;
     if (!email || !password || !fullName) {
@@ -26,9 +26,9 @@ async function createUser(request, response, next) {
   }
 }
 
-async function updateUser(request, response, next) {
+async function updateUsers(request, response, next) {
   try {
-    const { email, fullName } = request.body;
+    const { email, password,fullName } = request.body;
     const { id } = request.params;
     if (!email || !fullName) {
       throw errorResponder(
@@ -36,17 +36,17 @@ async function updateUser(request, response, next) {
         'All fields are required'
       );
     }
-    const user = await usersService.updateUser(id, email, fullName);
+    const user = await usersService.updateUsers(id, email, password, fullName);
     return response.status(200).json(user);
   } catch (error) {
     return next(error);
   }
 }
 
-async function deleteUser(request, response, next) {
+async function deleteUsers(request, response, next) {
   try {
     const { id } = request.params;
-    const success = await usersService.deleteUser(id);
+    const success = await usersService.deleteUsers(id);
     if (!success) {
       throw errorResponder(errorTypes.VALIDATION_ERROR, 'User not found');
     }
@@ -55,30 +55,9 @@ async function deleteUser(request, response, next) {
     return next(error);
   }
 }
-
-// Tambahan fungsi cadangan supaya route tidak error
-async function getUser(request, response, next) {
-  try {
-    // Logika menyusul atau bisa panggil service jika sudah ada
-    return response.status(200).json({ message: 'Detail user method' });
-  } catch (error) {
-    return next(error);
-  }
-}
-
-async function changePassword(request, response, next) {
-  try {
-    return response.status(200).json({ message: 'Change password method' });
-  } catch (error) {
-    return next(error);
-  }
-}
-
 module.exports = {
   getUsers,
-  createUser,
-  updateUser,
-  deleteUser,
-  getUser, // <--- Sekarang sudah terdaftar
-  changePassword, // <--- Sekarang sudah terdaftar
+  createUsers,
+  updateUsers,
+  deleteUsers,
 };

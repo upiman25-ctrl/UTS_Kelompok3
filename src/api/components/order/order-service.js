@@ -4,14 +4,14 @@ async function getorder() {
   return orderRepository.getorder();
 }
 
-async function create(Id,order,date,waiter,catatan) {
-  return orderRepository.create(Id,order,date,waiter,catatan);
+async function create(order,date,waiter,catatan) {
+  return orderRepository.create(order,date,waiter,catatan);
 }
-async function updateorder(Id,order,date,waiter,catatan) {
-  return orderRepository.updateorder(Id,order,date,waiter,catatan);
+async function updateorder(id,order,date,waiter,catatan) {
+  return orderRepository.updateorder(id,order,date,waiter,catatan);
 }
-async function deleteorder(Id) {
-  return orderRepository.deleteorder(Id);
+async function deleteorder(id) {
+  return orderRepository.deleteorder(id);
 }
 module.exports = {
   getorder,

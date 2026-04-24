@@ -14,16 +14,16 @@ async function getorders(request, response, next) {
 // CREATE
 async function createorder(request, response, next) {
   try {
-    const { id, orders, date, waiter, catatan } = request.body;
+    const {  orders, date, waiter, catatan } = request.body;
 
-    if (!id || !orders || !date || !waiter || !catatan) {
+    if (!orders || !date || !waiter || !catatan) {
       throw errorResponder(
         errorTypes.VALIDATION_ERROR,
         'Id, orders, date, waiter, and catatan are required'
       );
     }
 
-    const newOrder = await orderService.create(id, orders, date, waiter, catatan);
+    const newOrder = await orderService.create( orders, date, waiter, catatan);
 
     return response.status(200).json(newOrder);
   } catch (error) {
@@ -34,8 +34,8 @@ async function createorder(request, response, next) {
 // UPDATE
 async function updateorder(request, response, next) {
   try {
-  
-    const { id, orders, date, waiter, catatan } = request.body;
+  const { id} = request.params;
+    const {  orders, date, waiter, catatan } = request.body;
 
     if (!id || !orders || !date || !waiter || !catatan) {
       throw errorResponder(
@@ -61,7 +61,7 @@ async function updateorder(request, response, next) {
 // DELETE
 async function deleteorder(request, response, next) {
   try {
-    const success = await orderService.deleteorder(request.body.id);
+    const success = await orderService.deleteorder(request.params.id);
 
     if (!success) {
       throw errorResponder(

@@ -4,8 +4,8 @@ import {
   updateStatus as _updateStatus,
   updateAddress as _updateAddress,
   remove,
-} from './delivery-repository';
-import * as productService from '../product/product-service';
+} from './delivery-repository.js';
+import * as productService from '../product/product-service.js';
 
 async function getOptions() {
   return {

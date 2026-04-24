@@ -11,17 +11,14 @@ module.exports = (app) => {
   route.get('/', usersController.getUsers);
 
   // Create a new user
-  route.post('/', usersController.createUser);
+  route.post('/', usersController.createUsers);
 
   // Get user detail
   route.get('/:id', usersController.getUsers);
 
   // Update user
-  route.put('/:id', usersController.updateUser);
-
-  // Change password
-  route.put('/:id/change-password', usersController.changePassword);
+  route.put('/:id', usersController.updateUsers);
 
   // Delete user
-  route.delete('/:id', usersController.deleteUser);
+  route.delete('/:id', usersController.deleteUsers);
 };

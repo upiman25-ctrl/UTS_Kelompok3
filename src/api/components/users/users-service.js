@@ -4,32 +4,31 @@ async function getUsers() {
   return usersRepository.getUsers();
 }
 
-async function getUser(id) {
-  return usersRepository.getUser(id);
+async function getUsers(id) {
+  return usersRepository.getUsers(id);
 }
 
 async function emailExists(email) {
-  const user = await usersRepository.getUserByEmail(email);
-  return !!user;
+  const users = await usersRepository.getUsersByEmail(email);
+  return !!users;
 }
 
-async function createUser(email, password, fullName) {
+async function createUsers(email, password, fullName) {
   return usersRepository.createUser(email, password, fullName);
 }
 
-async function updateUser(id, email, fullName) {
-  return usersRepository.updateUser(id, email, fullName);
+async function updateUsers(id, email, password, fullName) {
+  return usersRepository.updateUsers(id, email, password, fullName);
 }
 
-async function deleteUser(id) {
-  return usersRepository.deleteUser(id);
+async function deleteUsers(id) {
+  return usersRepository.deleteUsers(id);
 }
 
 module.exports = {
   getUsers,
-  getUser,
   emailExists,
-  createUser,
-  updateUser,
-  deleteUser,
+  createUsers,
+  updateUsers,
+  deleteUsers,
 };

@@ -29,7 +29,7 @@ async function updateProduct(name, description, price, stock, category) {
 async function deleteProduct(id) {
   return productRepository.deleteProduct(id);
 }
-
+//
 module.exports = {
   getProduct,
   create,
